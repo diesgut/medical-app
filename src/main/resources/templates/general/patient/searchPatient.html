@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="searchPatient">
+
+		<div class='page-header'>
+			<div class='btn-toolbar pull-right'>
+				<div class='btn-group'>
+					<a type='button' th:href="@{/general/patients/register}"
+						class='btn btn-primary'> Registrar </a>
+				</div>
+			</div>
+			<h2>Pacientes</h2>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+
+				<table class="table table-striped">
+					<thead>
+						<tr class="d-flex">
+							<th scope="col" class="col-sm-1">ID</th>
+							<th scope="col" class="col-sm-2">NOMBRES</th>
+							<th scope="col" class="col-sm-2">APELLIDOS</th>
+							<th scope="col" class="col-sm-3">N. Historial</th>
+							<th scope="col" class="col-sm-2">DNI</th>
+							<th scope="col" class="col-sm-2">#</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in patients" class="d-flex">
+							<th scope="row" class="col-sm-1" v-text="item.id" ></th>
+							<td class="col-sm-2" v-text="item.firstName" ></td>
+							<td class="col-sm-2" v-text="item.lastName" ></td>
+							<td class="col-sm-3" v-text="item.numberClinicalHistory" ></td>
+							<td class="col-sm-2" v-text="item.dni" ></td>
+							<td scope="col" class="col-sm-2">
+								<div class="btn-group">
+									<button class="btn btn-primary">Acciones</button>
+									<button class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li><a
+											v-bind:href="'/general/patients/modify/'+item.id">Modificar</a></li>
+										<li><a v-on:click="deletePatient(item)">Eliminar</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+		
+	</script>
+	<script th:src="@{/app/general/patient/searchPatient.js}"
+		charset="utf-8"></script>
+</div>
+</html>

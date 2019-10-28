@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<!-- <meta charset="UTF-8"/> -->
+<!-- <meta charset="ISO-8859-1"> -->
+<head>
+
+<th:block th:replace="_layouts/partials/head"></th:block>
+</head>
+
+<body>
+
+	<th:block th:replace="_layouts/partials/nav"></th:block>
+
+	<!-- Page Content -->
+	<div layout:fragment="content" />
+	<!-- /.container -->
+
+
+
+	<th:block th:replace="_layouts/partials/footer"></th:block>
+	<script th:inline="javascript">
+		$.notify.defaults({
+			globalPosition : 'bottom right'
+		});
+	</script>
+	<section layout:fragment="js">JAVASCRIPTS</section>
+</body>
+
+</html>
+

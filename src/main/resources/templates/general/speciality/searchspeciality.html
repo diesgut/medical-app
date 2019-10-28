@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="specialitySearch">
+		<!-- 	        th:href="@{'/category/edit/' + ${category.id}}" -->
+		<!--  th:href="@{/academico/departamento}"  -->
+		<div class='page-header'>
+			<div class='btn-toolbar pull-right'>
+				<div class='btn-group'>
+					<a type='button' th:href="@{/general/specialities/register}"
+						class='btn btn-primary'> Registrar </a>
+				</div>
+			</div>
+			<h2>Especialidades</h2>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+
+				<table class="table table-striped">
+					<thead>
+						<tr class="d-flex">
+							<th scope="col" class="col-sm-4">ID</th>
+							<th scope="col" class="col-sm-6">NOMBRE</th>
+							<th scope="col" class="col-sm-2">#</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in specialities" class="d-flex">
+							<th scope="row" v-text="item.id" class="col-sm-3"></th>
+							<td v-text="item.name" class="col-sm-6"></td>
+							<td >
+								<div class="btn-group">
+									<button class="btn btn-primary">Acciones</button>
+									<button class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li><a v-bind:href="'/general/specialities/modify/'+item.id">Modificar</a></li>
+										<li><a v-on:click="deleteSpec(item)">Eliminar</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+		
+	</script>
+	<script th:src="@{/app/general/speciality/searchspeciality.js}"
+		charset="utf-8"></script>
+</div>
+</html>

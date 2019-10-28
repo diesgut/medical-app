@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="specialityMain">
+		<div class='page-header'>
+			<div class='btn-toolbar pull-right'>
+				<div class='btn-group'>
+					<a type='button' th:href="@{/general/specialities}"
+						class='btn btn-primary'> Regresar </a>
+				</div>
+			</div>
+			<h2  v-if="speciality.id==null">Registrar Especialidad</h2>
+			<h2  v-else="">Modificar Especialidad <span v-text="speciality.name"></span></h2>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Nombre</label> 
+						<input type="text"
+							id="txtName" 
+							v-model="speciality.name"
+							class="form-control" 
+							placeholder="Ingrese el nombre" />
+						<small id="nameHelp" class="form-text text-muted">El
+							nombre de la especialidad.</small>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<button type="button" v-on:click="save" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+	 var jSpeciality = /*[[${jSpeciality}]]*/ {};
+	</script>
+	<script th:src="@{/app/general/speciality/registerspeciality.js}" charset="utf-8"></script>
+</div>
+</html>
