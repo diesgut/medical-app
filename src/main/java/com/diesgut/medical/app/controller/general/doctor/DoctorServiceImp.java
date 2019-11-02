@@ -11,7 +11,7 @@ import com.diesgut.medical.model.Doctor;
 import com.diesgut.medical.model.Speciality;
 
 @Service
-@Transactional(readOnly = false)
+@Transactional(readOnly = true)
 public class DoctorServiceImp implements IDoctorService {
 
 	@Autowired

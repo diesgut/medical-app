@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.diesgut.medical.model.Speciality;
 
-interface ISpecialityService {
+public interface ISpecialityService {
 
 	void save(Speciality speciality);
 

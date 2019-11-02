@@ -4,16 +4,17 @@
 
 <!-- Page Content -->
 <div layout:fragment="content">
-	<div class="container" id="searchDoctor">
+	<div class="container" id="searchMedicalConsultation">
 
 		<div class='page-header'>
 			<div class='btn-toolbar pull-right'>
 				<div class='btn-group'>
-					<a type='button' th:href="@{/general/doctors/register}"
+					<a type='button'
+						th:href="@{/consultation/medicalconsultations/register}"
 						class='btn btn-primary'> Registrar </a>
 				</div>
 			</div>
-			<h2>Medicos</h2>
+			<h2>Consulta Médica</h2>
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
@@ -21,21 +22,27 @@
 					<thead>
 						<tr class="d-flex">
 							<th scope="col" class="col-sm-1">ID</th>
-							<th scope="col" class="col-sm-3">NOMBRES</th>
-							<th scope="col" class="col-sm-2">ESPECIALIDAD</th>
-							<th scope="col" class="col-sm-2">DNI</th>
-							<th scope="col" class="col-sm-2">CMP</th>
-							<th scope="col" class="col-sm-1">#</th>
+							<th scope="col" class="col-sm-3">PACIENTE</th>
+							<th scope="col" class="col-sm-3">DOCTOR</th>
+							<th scope="col" class="col-sm-3">DETALLE</th>
+							<th scope="col" class="col-sm-2">#</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="item in doctors" class="d-flex">
+						<tr v-for="item in medicalConsultations" class="d-flex">
 							<th scope="row" class="col-sm-1" v-text="item.id"></th>
 							<td class="col-sm-3"><span
-								v-text="item.firstName + ' '+item.lastName"></span></td>
-							<td class="col-sm-2" v-text="item.speciality.name"></td>
-							<td class="col-sm-2" v-text="item.dni"></td>
-							<td class="col-sm-2" v-text="item.cmp"></td>
+								v-text="item.patient.firstName + ' '+item.patient.lastName"></span></td>
+							<td class="col-sm-3"><span
+								v-text="item.doctor.firstName + ' '+item.doctor.lastName"></span>
+							</td>
+							<td class="col-sm-3">
+								<ul class="list-group list-group-flush" v-if="item.detailConsultations">
+								  <li class="list-group-item py-0" v-for="det in item.detailConsultations">
+								  	<h6 class="py-0">{{det.diagnostic}} <small>{{det.treatment}}</small></h6>
+								  </li>
+								</ul>
+							</td>
 							<td scope="col" class="col-sm-2">
 								<div class="btn-group">
 									<button class="btn btn-primary">Acciones</button>
@@ -44,7 +51,7 @@
 										<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu pull-right">
-										<li><a v-bind:href="'/general/doctors/modify/'+item.id">Modificar</a></li>
+										<li><a v-bind:href="'/consultation/medicalconsultations/modify/'+item.id">Modificar</a></li>
 										<li><a v-on:click="deleteSpec(item)">Eliminar</a></li>
 									</ul>
 								</div>
@@ -62,6 +69,8 @@
 	<script th:inline="javascript">
 		
 	</script>
-	<script th:src="@{/app/general/doctor/searchDoctor.js}" charset="utf-8"></script>
+	<script
+		th:src="@{/app/consultation/medicalConsultation/searchMedicalConsultation.js}"
+		charset="utf-8"></script>
 </div>
 </html>

@@ -16,7 +16,7 @@ public class AbstractEasyDAO<T extends Serializable> implements EasyDAO<T> {
 //    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private EntityManager em;
+	protected EntityManager em;
 
 //	public void setSessionFactory(SessionFactory sessionFactory) {
 //		this.sessionFactory = sessionFactory;

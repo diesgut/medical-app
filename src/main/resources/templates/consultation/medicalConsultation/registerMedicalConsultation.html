@@ -1,0 +1,142 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="registerMedicalConsultationMain">
+		<div class='page-header'>
+			<div class='btn-toolbar pull-right'>
+				<div class='btn-group'>
+					<a type='button' th:href="@{/consultation/medicalconsultations}"
+						class='btn btn-primary'> Regresar </a>
+				</div>
+			</div>
+			<h2 v-if="medicalConsultation.id==null">Registrar Consulta
+				Médica</h2>
+			<h2 v-else="">Modificar Consulta Médica</h2>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12 panel-body">
+				<form>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group col-md-12">
+								<label for="cboDoctor">Doctor</label> <select id="cboDoctor"
+									v-model="medicalConsultation.doctor.id" class="form-control">
+									<option v-for="item in doctors" v-bind:value="item.id">{{item.firstName}}
+										{{item.lastName}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group col-md-12">
+								<label for="cboPatient">Paciente</label> <select id="cboPatient"
+									v-model="medicalConsultation.patient.id" class="form-control">
+									<option v-for="item in patients" v-bind:value="item.id">{{item.firstName}}
+										{{item.lastName}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class='page-header'>
+						<h3>
+							Detalle
+							<button class="btn" type="button" data-toggle="modal"
+								data-target="#exampleModal">
+								<i class="fa fa-plus"></i>
+							</button>
+						</h3>
+					</div>
+					<div class="row panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Diagnóstico</th>
+									<th>Tratamiento</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="item in detailConsultations" class="d-flex">
+									<td v-text="item.diagnostic">John</td>
+									<td v-text="item.treatment">Doe</td>
+									<td>
+										<div class="dropdown">
+											<button class="btn btn-secondary" type="button"
+												id="dropdownMenuButton" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												<i class="fa fa-ellipsis-v"></i>
+											</button>
+											<div class="dropdown-menu"
+												aria-labelledby="dropdownMenuButton">
+												<a class="dropdown-item" href="#" v-on:click="modifyDetail(item)">Modificar</a> 
+												<a class="dropdown-item" href="#" v-on:click="deleteDetail(item)">Eliminar</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col text-center">
+							<button type="button" v-on:click="save" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Detalle
+							Consulta</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">Diagnóstico:</label>
+								<input id="txtDiagnostic"
+									v-model="detailConsultation.diagnostic" type="text"
+									class="form-control" placeholder="Diagnóstico" />
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tratamiento:</label>
+								<input id="txtTreatment" v-model="detailConsultation.treatment"
+									type="text" class="form-control" placeholder="Tratamiento" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" >Cerrar</button>
+						<button type="button" class="btn btn-primary"
+							v-on:click="addDetail"
+							v-text="detailConsultation.id==null ? 'Agregar' :'Modificar'">Agregar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+		var jMedicalConsultation = /*[[${jMedicalConsultation}]]*/{};
+	</script>
+	<script
+		th:src="@{/app/consultation/medicalConsultation/registerMedicalConsultation.js}"
+		charset="utf-8"></script>
+</div>
+</html>

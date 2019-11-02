@@ -23,41 +23,38 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="txtFirstName">Nombres</label> 
-							<input id="txtFirstName"
-									v-model="doctor.firstName"  
-							type="text"
-								class="form-control" 
-								placeholder="Nombres"/>
+							<label for="txtFirstName">Nombres</label> <input
+								id="txtFirstName" v-model="doctor.firstName" type="text"
+								class="form-control" placeholder="Nombres" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="txtApellidos">Apellidos</label> 
-							<input id="txtApellidos"
-								v-model="doctor.lastName"
-								type="text" 
-								class="form-control" 
-								placeholder="Apellidos"/>
+							<label for="txtApellidos">Apellidos</label> <input
+								id="txtApellidos" v-model="doctor.lastName" type="text"
+								class="form-control" placeholder="Apellidos" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="txtDni">DNI</label> 
-							<input id="txtDni"
-									v-model="doctor.dni"  
-							type="text"
-								class="form-control" 
-								placeholder="DNI"/>
+							<label for="txtDni">DNI</label> <input id="txtDni"
+								v-model="doctor.dni" type="text" class="form-control"
+								placeholder="DNI" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="txtCmp">CMP</label> 
-							<input id="txtCmp"
-								v-model="doctor.cmp"
-								type="text" 
-								class="form-control" 
-								placeholder="CMP"/>
+							<label for="txtCmp">CMP</label> <input id="txtCmp"
+								v-model="doctor.cmp" type="text" class="form-control"
+								placeholder="CMP" />
 						</div>
 					</div>
-
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group col-md-12">
+								<label for="txtDni">Especialidad</label> <select
+									v-model="doctor.speciality.id" class="form-control">
+									<option v-for="item in specialities" v-bind:value="item.id">{{item.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col text-center">
 							<button type="button" v-on:click="save" class="btn btn-primary">Guardar</button>

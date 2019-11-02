@@ -1,9 +1,11 @@
 new Vue({
     el: '#registerDoctorMain',
     data: {
-    	doctor:{}
+    	doctor:{speciality:{}},
+    	specialities:[]
     },
     created(){
+    	this.loadSpecialities();
     	if(jDoctor!=null){
     		this.doctor=JSON.parse(jDoctor);
     	}
@@ -33,6 +35,19 @@ new Vue({
         			this.doctor=response;
         			$.notify(message, "success");
         		});
+        },loadSpecialities(){
+        	let vue=this;
+        	fetch('/general/specialities/specialities')
+        	  .then(function(res) {
+        	    return res.json();
+        	  })
+        	  .catch(error =>{
+        			console.dir(error);
+        			$.notify(error, "error");
+        		})
+        	  .then(response => {
+      			this.specialities=response;
+    		});
         }
     }
 });

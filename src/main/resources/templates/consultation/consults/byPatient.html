@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="consultByPatient">
+
+		<div class='page-header'>
+			<h2>Consulta Médica Por Paciente</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+
+				<label for="txtPatient">Paciente</label>
+
+			</div>
+			<div class="col-md-6">
+
+				<select id="cboPatient" v-model="patient.id" class="form-control">
+					<option v-for="item in patients" v-bind:value="item.id">{{item.firstName}}
+						{{item.lastName}}</option>
+				</select>
+
+			</div>
+			<div class="col-md-3">
+				<button type="button" class="btn btn-primary"
+					v-on:click="searchMedicalConsultationsByPatient">Buscar</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr class="d-flex">
+							<th scope="col" class="col-sm-1">ID</th>
+							<th scope="col" class="col-sm-3">PACIENTE</th>
+							<th scope="col" class="col-sm-3">DOCTOR</th>
+							<th scope="col" class="col-sm-5">DETALLE</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in medicalConsultations" class="d-flex">
+							<td scope="row" class="col-sm-1" v-text="item.id"></td>
+							<td class="col-sm-3"><span
+								v-text="item.patient.firstName + ' '+item.patient.lastName"></span></td>
+							<td class="col-sm-3"><span
+								v-text="item.doctor.firstName + ' '+item.doctor.lastName"></span>
+							</td>
+							<td class="col-sm-3">
+								<ul class="list-group list-group-flush"
+									v-if="item.detailConsultations">
+									<li class="list-group-item py-0"
+										v-for="det in item.detailConsultations">
+										<h6 class="py-0">
+											{{det.diagnostic}} <small>{{det.treatment}}</small>
+										</h6>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+		
+	</script>
+	<script th:src="@{/app/consultation/consults/byPatient.js}"
+		charset="utf-8"></script>
+</div>
+</html>
