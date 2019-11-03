@@ -1,7 +1,7 @@
 Vue.component("multiselect", window.VueMultiselect.default);
 
 new Vue({
-    el: '#consultByPatient',
+    el: '#clinicalHistory',
     data: {
     	medicalConsultations:[],
     	patient:{},
@@ -45,7 +45,26 @@ new Vue({
       			this.medicalConsultations=response;
     		});
         }, formatDate(date){
-        	 return moment(date).format('YYYY-MM-DD HH:mm:ss');//THH:mm:ss
+        	 return moment(date).format('YYYY-MM-DD HH:mm:ss');// THH:mm:ss
+        }, searchMedicalConsultationsByPatientPdf(){
+        	let vue=this;
+        	if(this.patient.id==null){
+        		$.notify("Debe seleccionar un paciente.", "error");
+        		return;
+        	}
+
+            $.fileDownload('/reports/patient/clinicalhistory/'+this.patient.id, {
+                httpMethod: "GET",
+                successCallback: function (responseHtml, url) {
+// console.log('aqui');
+                },
+                onFail: function (e) {
+                    console.log(e);
+                },
+                failCallback: function (responseHtml, url) {
+                    $.notify("Error al descargar el reporte.", "error");
+                }
+            });
         }
     }
 });

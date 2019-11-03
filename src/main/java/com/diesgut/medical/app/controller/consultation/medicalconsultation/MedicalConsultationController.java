@@ -82,8 +82,8 @@ public class MedicalConsultationController {
 	public ResponseEntity<List<MedicalConsultation>> medicalConsultationByPatient(
 			@PathVariable(name = "id") Long idPatient, Model model) {
 		List<MedicalConsultation> list = service.allMedicalConsultationByPatient(new Patient(idPatient));
-		list.forEach(x -> x.getPatient().setMedicalsConsultations(null));
-		list.forEach(x -> x.getDoctor().getSpeciality().setDoctors(null));
+//		list.forEach(x -> x.getPatient().setMedicalsConsultations(null));
+//		list.forEach(x -> x.getDoctor().getSpeciality().setDoctors(null));
 		list.forEach(x -> x.getDetailConsultations().forEach(y -> y.setMedicalConsultation(null)));
 		return new ResponseEntity<List<MedicalConsultation>>(list, HttpStatus.OK);
 	}

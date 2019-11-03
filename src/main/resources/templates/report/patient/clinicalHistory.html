@@ -4,7 +4,7 @@
 
 <!-- Page Content -->
 <div layout:fragment="content">
-	<div class="container" id="consultByPatient">
+	<div class="container" id="clinicalHistory">
 
 		<div class='page-header'>
 			<h2>Consulta Médica Por Paciente</h2>
@@ -26,6 +26,8 @@
 			<div class="col-md-3">
 				<button type="button" class="btn btn-primary"
 					v-on:click="searchMedicalConsultationsByPatient">Buscar</button>
+				<button type="button" class="btn btn-primary" 
+					v-on:click="searchMedicalConsultationsByPatientPdf">Exportar</button>
 			</div>
 		</div>
 		<div class="row">
@@ -75,7 +77,7 @@
 	<script th:inline="javascript">
 		
 	</script>
-	<script th:src="@{/app/consultation/consults/byPatient.js}"
-		charset="utf-8"></script>
+	<script th:src="@{/app/report/patient/clinicalHistory.js}"
+			charset="utf-8"></script>
 </div>
 </html>

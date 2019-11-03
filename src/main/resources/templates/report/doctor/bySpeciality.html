@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="_layouts/layout">
+
+<!-- Page Content -->
+<div layout:fragment="content">
+	<div class="container" id="doctorBySpeciality">
+
+		<div class='page-header'>
+			<h2>Médicos por Especialidad</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+
+				<label for="cboSpeciality">Especialidad</label>
+
+			</div>
+			<div class="col-md-6">
+
+				<select id="cboSpeciality" v-model="speciality.id"
+					class="form-control">
+					<option v-for="item in specialities" v-bind:value="item.id">
+						{{item.name}}</option>
+				</select>
+
+			</div>
+			<div class="col-md-3">
+				<button type="button" class="btn btn-primary"
+					v-on:click="searchMedicalConsultationsByPatient">Buscar</button>
+				<button type="button" class="btn btn-primary" 
+					v-on:click="searchMedicalConsultationsByPatientPdf">Exportar</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr class="d-flex">
+							<th scope="col" class="col-sm-1">ID</th>
+							<th scope="col" class="col-sm-3">NOMBRES</th>
+							<th scope="col" class="col-sm-3">ESPECIALIDAD</th>
+							<th scope="col" class="col-sm-2">DNI</th>
+							<th scope="col" class="col-sm-2">CMP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in doctors" class="d-flex">
+							<th scope="row" class="col-sm-1" v-text="item.id"></th>
+							<td class="col-sm-3"><span
+								v-text="item.firstName + ' '+item.lastName"></span></td>
+							<td class="col-sm-3" v-text="item.speciality.name"></td>
+							<td class="col-sm-2" v-text="item.dni"></td>
+							<td class="col-sm-2" v-text="item.cmp"></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+<div layout:fragment="js">
+	<script th:inline="javascript">
+		
+	</script>
+	<script th:src="@{/app/report/doctor/bySpeciality.js}" charset="utf-8"></script>
+</div>
+</html>
