@@ -23,17 +23,16 @@ import com.diesgut.medical.model.Patient;
 @Controller
 @RequestMapping("/consultation/medicalconsultations")
 public class MedicalConsultationController {
-	
+
 	@Autowired
 	iMedicalConsultationService service;
 
 	@GetMapping
-	public ModelAndView getIndex() {
-		ModelAndView modelAndView = new ModelAndView("/consultation/medicalConsultation/searchMedicalConsultation");
-		return modelAndView;
+	public String getIndex() {
+		return "/consultation/medicalConsultation/searchMedicalConsultation";
 	}
 
-	@GetMapping("medicalConsults")
+	@GetMapping({ "medicalConsults" })
 	public ResponseEntity<List<MedicalConsultation>> doctors() {
 		List<MedicalConsultation> list = service.allMedicalConsultations();
 		list.forEach(x -> x.getPatient().setMedicalsConsultations(null));
@@ -73,9 +72,8 @@ public class MedicalConsultationController {
 	}
 
 	@GetMapping("consultsByPatient")
-	public ModelAndView consultByPatient() {
-		ModelAndView modelAndView = new ModelAndView("/consultation/consults/byPatient");
-		return modelAndView;
+	public String consultByPatient() {
+		return "/consultation/consults/byPatient";
 	}
 
 	@GetMapping("medicalConsultationByPatient/{id}")

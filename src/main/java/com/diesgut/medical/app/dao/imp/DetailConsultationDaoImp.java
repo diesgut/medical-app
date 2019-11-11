@@ -12,7 +12,7 @@ import com.diesgut.medical.model.DetailConsultation;
 import com.diesgut.medical.model.MedicalConsultation;
 
 @Repository
-public class DetailConsultationDaoImp extends AbstractEasyDAO<DetailConsultation>
+public class DetailConsultationDaoImp extends AbstractEasyDao<DetailConsultation>
 		implements IDetailConsultationDao, EasyDAO<DetailConsultation> {
 
 	public DetailConsultationDaoImp() {
