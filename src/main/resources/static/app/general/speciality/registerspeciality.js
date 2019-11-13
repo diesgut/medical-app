@@ -14,6 +14,10 @@ new Vue({
     methods: {
         save() {
         	console.log("save");
+        	if(!$("#frmSpeciality").parsley().validate()){
+        		return;
+        	}
+        	return;
         	let message="Registro guardado!";
         	if(this.speciality.id!=null){
         		message="Registro actualizado!";

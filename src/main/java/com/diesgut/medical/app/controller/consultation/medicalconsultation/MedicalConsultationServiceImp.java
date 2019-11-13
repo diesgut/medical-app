@@ -26,6 +26,11 @@ public class MedicalConsultationServiceImp implements iMedicalConsultationServic
 	@Override
 	@Transactional
 	public void save(MedicalConsultation medicalConsultation) {
+		medicalConsultation.getPatient().setMedicalsConsultations(null);
+		for (DetailConsultation det : medicalConsultation.getDetailConsultations()) {
+			det.setMedicalConsultation(medicalConsultation);
+		}
+
 		medicalConsultation.setCreateDate(LocalDateTime.now());
 		iMedicalConsultationDao.save(medicalConsultation);
 	}
@@ -34,6 +39,9 @@ public class MedicalConsultationServiceImp implements iMedicalConsultationServic
 	@Transactional
 	public void update(MedicalConsultation medicalConsultation) {
 		List<DetailConsultation> detalleForm = medicalConsultation.getDetailConsultations();
+		for (DetailConsultation det : medicalConsultation.getDetailConsultations()) {
+			det.setMedicalConsultation(medicalConsultation);
+		}
 		List<DetailConsultation> detalleDB = iDetailConsultationDao.allByMedicalConsultation(medicalConsultation);
 		for (DetailConsultation det : detalleDB) {
 			if (!detalleForm.contains(det)) {

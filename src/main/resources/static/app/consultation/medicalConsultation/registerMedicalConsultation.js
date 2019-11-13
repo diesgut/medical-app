@@ -21,6 +21,9 @@ new Vue({
     methods: {
         save() {
         	console.log("save");
+        	if(!$("#frmConsult").parsley().validate()){
+        		return;
+        	}
         	let message="Registro guardado!";
         	if(this.medicalConsultation.id!=null){
         		message="Registro actualizado!";
@@ -68,6 +71,9 @@ new Vue({
       			this.patients=response;
     		});
         }, addDetail(){
+        	if(!$("#frmDetail").parsley().validate()){
+        		return;
+        	}
         	if(this.detailConsultation.id==null){
         		this.detailConsultations.push({ ...this.detailConsultation });
         	}else{

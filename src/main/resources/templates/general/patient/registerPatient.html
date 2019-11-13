@@ -19,19 +19,19 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<form>
+				<form id="frmPatient">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group col-md-12">
 								<label for="txtFirstName">Nombres</label><input
-									id="txtFirstName" v-model="patient.firstName" type="text"
+									id="txtFirstName" v-model="patient.firstName" type="text" required="required"
 									class="form-control" placeholder="Nombres"/>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group col-md-12">
 								<label for="txtLastName">Apellidos</label><input
-									id="txtFirstName" v-model="patient.lastName" type="text"
+									id="txtFirstName" v-model="patient.lastName" type="text" required="required"
 									class="form-control" placeholder="Apellidos"/>
 							</div>
 						</div>
@@ -40,14 +40,14 @@
 						<div class="col-md-6">
 							<div class="form-group col-md-12">
 								<label for="txtDni">N. Historial</label><input id="txtNumHistorial"
-									v-model="patient.numberClinicalHistory" type="text" class="form-control"
-									placeholder="Nº Historial"/>
+									v-model="patient.numberClinicalHistory" required="required" type="number" min="0" class="form-control"
+									placeholder="N. Historial"/>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group col-md-12">
 								<label for="txtDni">DNI</label><input id="txtDni"
-									v-model="patient.dni" type="text" class="form-control"
+									v-model="patient.dni" required="required"  type="number" min="0" class="form-control"
 									placeholder="DNI"/>
 							</div>
 						</div>

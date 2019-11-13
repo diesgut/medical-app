@@ -49,15 +49,13 @@ public class MedicalConsultationController {
 	@PostMapping("save")
 	public ResponseEntity<MedicalConsultation> save(@RequestBody MedicalConsultation medicalConsultation) {
 		System.out.println("save");
-		medicalConsultation.getPatient().setMedicalsConsultations(null);
-		for (DetailConsultation det : medicalConsultation.getDetailConsultations()) {
-			det.setMedicalConsultation(new MedicalConsultation(medicalConsultation.getId()));
-		}
+
 		if (medicalConsultation.getId() == null) {
 			service.save(medicalConsultation);
 		} else {
 			service.update(medicalConsultation);
 		}
+		medicalConsultation = service.findMedicalConsultation(medicalConsultation.getId());
 		ResponseEntity<MedicalConsultation> response = new ResponseEntity<MedicalConsultation>(medicalConsultation,
 				HttpStatus.OK);
 		return response;

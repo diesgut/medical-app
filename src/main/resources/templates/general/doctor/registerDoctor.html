@@ -19,36 +19,36 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<form>
+				<form id="frmDoctors">
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="txtFirstName">Nombres</label> <input
 								id="txtFirstName" v-model="doctor.firstName" type="text"
-								class="form-control" placeholder="Nombres" />
+								class="form-control" placeholder="Nombres" required="required"/>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="txtApellidos">Apellidos</label> <input
 								id="txtApellidos" v-model="doctor.lastName" type="text"
-								class="form-control" placeholder="Apellidos" />
+								class="form-control" placeholder="Apellidos" required="required"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="txtDni">DNI</label> <input id="txtDni"
-								v-model="doctor.dni" type="text" class="form-control"
-								placeholder="DNI" />
+								v-model="doctor.dni"  class="form-control"
+								placeholder="DNI" required="required" type="number" min="0"/>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="txtCmp">CMP</label> <input id="txtCmp"
 								v-model="doctor.cmp" type="text" class="form-control"
-								placeholder="CMP" />
+								placeholder="CMP" required="required"/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group col-md-12">
-								<label for="txtDni">Especialidad</label> <select
+								<label for="txtDni">Especialidad</label> <select required="required"
 									v-model="doctor.speciality.id" class="form-control">
 									<option v-for="item in specialities" v-bind:value="item.id">{{item.name}}</option>
 								</select>

@@ -16,6 +16,9 @@ new Vue({
     methods: {
         save() {
         	console.log("save");
+        	if(!$("#frmDoctors").parsley().validate()){
+        		return;
+        	}
         	let message="Registro guardado!";
         	if(this.doctor.id!=null){
         		message="Registro actualizado!";
