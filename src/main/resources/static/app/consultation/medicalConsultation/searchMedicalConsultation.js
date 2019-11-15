@@ -23,6 +23,8 @@ new Vue({
         		  console.dir(response);
       			this.medicalConsultations=response;
     		});
+        }, deleteMedicalConsult(medicalConsult){
+        	
         }
     }
 });

@@ -18,11 +18,13 @@ public class DoctorServiceImp implements IDoctorService {
 	IDoctorDao iDoctorDao;
 
 	@Override
+	@Transactional
 	public void save(Doctor doctor) {
 		iDoctorDao.save(doctor);
 	}
 
 	@Override
+	@Transactional
 	public void update(Doctor doctor) {
 		iDoctorDao.update(doctor);
 	}
