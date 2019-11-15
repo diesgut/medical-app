@@ -14,7 +14,7 @@ import com.diesgut.medical.model.Patient;
 import com.diesgut.medical.model.Speciality;
 
 @Repository
-public class DoctorDaoImp extends AbstractEasyDao<Doctor> implements IDoctorDao, EasyDAO<Doctor> {
+public class DoctorDaoImp extends AbstractEasyDAO<Doctor> implements IDoctorDao, EasyDAO<Doctor> {
 
 	public DoctorDaoImp() {
 		super();

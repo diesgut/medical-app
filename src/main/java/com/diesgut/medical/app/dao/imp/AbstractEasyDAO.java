@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.diesgut.medical.app.dao.EasyDAO;
 import com.google.common.base.Preconditions;
 
-public class AbstractEasyDao<T extends Serializable> implements EasyDAO<T> {
+public class AbstractEasyDAO<T extends Serializable> implements EasyDAO<T> { 
 	private Class<T> clazz;
 //    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

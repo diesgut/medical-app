@@ -7,7 +7,7 @@ import com.diesgut.medical.app.dao.ISpecialityDao;
 import com.diesgut.medical.model.Speciality;
 
 @Repository
-public class SpecialityDaoImp extends AbstractEasyDao<Speciality> implements ISpecialityDao, EasyDAO<Speciality> {
+public class SpecialityDaoImp extends AbstractEasyDAO<Speciality> implements ISpecialityDao, EasyDAO<Speciality> {
 
 	public SpecialityDaoImp() {
 		super();
