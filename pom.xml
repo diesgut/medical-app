@@ -81,9 +81,9 @@
 
 		<dependency>
 <!-- 			<groupId>com.diesgut.medical</groupId> -->
-			<groupId>com.diesgut.medical</groupId>
-			<artifactId>model</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>com.github.diesgut</groupId>
+			<artifactId>medical-model</artifactId>
+			<version>1</version>
 		</dependency>
 
 		<dependency>
