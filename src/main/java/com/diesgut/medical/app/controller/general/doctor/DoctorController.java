@@ -32,7 +32,7 @@ public class DoctorController {
 
 	@GetMapping
 	public ModelAndView getIndex() {
-		ModelAndView modelAndView = new ModelAndView("/general/doctor/searchDoctor");
+		ModelAndView modelAndView = new ModelAndView("general/doctor/searchDoctor");
 		return modelAndView;
 	}
 

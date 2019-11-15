@@ -29,7 +29,7 @@ public class SpecialityController {
 
 	@GetMapping
 	public ModelAndView getIndex() {
-		ModelAndView modelAndView = new ModelAndView("/general/speciality/searchspeciality");
+		ModelAndView modelAndView = new ModelAndView("general/speciality/searchspeciality");
 		return modelAndView;
 	}
 

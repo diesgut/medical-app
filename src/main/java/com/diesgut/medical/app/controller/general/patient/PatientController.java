@@ -29,7 +29,7 @@ public class PatientController {
 
 	@GetMapping
 	public ModelAndView getIndex() {
-		ModelAndView modelAndView = new ModelAndView("/general/patient/searchPatient");
+		ModelAndView modelAndView = new ModelAndView("general/patient/searchPatient");
 		return modelAndView;
 	}
 
