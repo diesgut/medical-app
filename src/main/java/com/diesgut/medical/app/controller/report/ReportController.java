@@ -32,12 +32,12 @@ public class ReportController {
 
 	@GetMapping("doctor/byspeciality")
 	public String patientBySpeciality() {
-		return "/report/doctor/bySpeciality";
+		return "report/doctor/bySpeciality";
 	}
 
 	@GetMapping("patient/clinicalhistory")
 	public String clinicalhistory() {
-		return "/report/patient/clinicalHistory";
+		return "report/patient/clinicalHistory";
 	}
 
 	@GetMapping("doctor/byspeciality/{id}")

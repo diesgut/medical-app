@@ -42,7 +42,7 @@ public class SpecialityController {
 
 	@GetMapping("register")
 	public String register() {
-		return "/general/speciality/registerspeciality";
+		return "general/speciality/registerspeciality";
 	}
 
 	@PostMapping("save")
@@ -67,7 +67,7 @@ public class SpecialityController {
 		}
 		String jSpeciality = JsonHelper.toJson(speciality);
 		model.addAttribute("jSpeciality", jSpeciality);
-		return "/general/speciality/registerspeciality";
+		return "general/speciality/registerspeciality";
 	}
 
 	@DeleteMapping("delete")

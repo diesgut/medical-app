@@ -42,7 +42,7 @@ public class PatientController {
 
 	@GetMapping("register")
 	public String register() {
-		return "/general/patient/registerPatient";
+		return "general/patient/registerPatient";
 	}
 
 	@PostMapping("save")
@@ -65,7 +65,7 @@ public class PatientController {
 		}
 		String jPatient = JsonHelper.toJson(patient);
 		model.addAttribute("jPatient", jPatient);
-		return "/general/patient/registerPatient";
+		return "general/patient/registerPatient";
 	}
 
 }

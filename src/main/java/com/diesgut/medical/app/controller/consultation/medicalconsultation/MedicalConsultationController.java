@@ -29,7 +29,7 @@ public class MedicalConsultationController {
 
 	@GetMapping
 	public String getIndex() {
-		return "/consultation/medicalConsultation/searchMedicalConsultation";
+		return "consultation/medicalConsultation/searchMedicalConsultation";
 	}
 
 	@GetMapping({ "medicalConsults" })
@@ -43,7 +43,7 @@ public class MedicalConsultationController {
 
 	@GetMapping("register")
 	public String register() {
-		return "/consultation/medicalConsultation/registerMedicalConsultation";
+		return "consultation/medicalConsultation/registerMedicalConsultation";
 	}
 
 	@PostMapping("save")
@@ -66,12 +66,12 @@ public class MedicalConsultationController {
 		MedicalConsultation medicalConsultation = service.findMedicalConsultation(idMedicalConsultation);
 		String jMedicalConsultation = JsonHelper.toJson(medicalConsultation);
 		model.addAttribute("jMedicalConsultation", jMedicalConsultation);
-		return "/consultation/medicalConsultation/registerMedicalConsultation";
+		return "consultation/medicalConsultation/registerMedicalConsultation";
 	}
 
 	@GetMapping("consultsByPatient")
 	public String consultByPatient() {
-		return "/consultation/consults/byPatient";
+		return "consultation/consults/byPatient";
 	}
 
 	@GetMapping("medicalConsultationByPatient/{id}")
